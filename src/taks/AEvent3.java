@@ -1,27 +1,25 @@
 package taks;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 class AEvent3 extends Frame {
-    TextField tf;
+    TextField testField;
 
     AEvent3() {
-        tf = new TextField();
-        tf.setBounds(60, 50, 170, 20);
-        Button b = new Button("click me");
-        b.setBounds(50, 120, 80, 30);
+        testField = new TextField();
+        testField.setBounds(60, 50, 170, 20);
+        Button button = new Button("click me");
+        button.setBounds(50, 120, 80, 30);
 
-        b.addActionListener(e -> tf.setText("hello"));
-        add(b);
-        add(tf);
+        button.addActionListener(e -> testField.setText("hello"));
+        add(button);
+        add(testField);
         setSize(300, 300);
         setLayout(null);
         setVisible(true);
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         new AEvent3();
     }
 }
