@@ -16,11 +16,11 @@ public class Calculator extends Frame {
 
     CheckboxGroup checkboxGroup;
 
-    // constructor
+    //конструктор
     Calculator() {
         // создаем фрейм окна
         Frame frame = new Frame("Контрольная работа № 2");
-//        добавляем WindowListener для закрытия фрейма
+        //добавляем WindowListener для закрытия фрейма
         frame.addWindowListener(new MyWindowListener());
         // устанавливаем размер, лэйаут и видимость фрейма
         frame.setSize(400, 500);
@@ -54,7 +54,8 @@ public class Calculator extends Frame {
         Button button = new Button("Вычислить");
         button.setBounds(50, 250, 100, 30);
         frame.add(button);
-        //register listener
+
+        //добавляем EventListener для кнопки
         CalculatorEvensListener calculatorEvensListener = new CalculatorEvensListener(this);
         button.addActionListener(calculatorEvensListener);
     }
