@@ -11,6 +11,8 @@ import java.awt.event.WindowEvent;
  * вычитание, деление, умножение, очистку окон редактирования.
  */
 public class Calculator extends Frame {
+    TextField resultTextField;
+    TextField operand1, operand2;
 
     // constructor
     Calculator() {
@@ -24,9 +26,9 @@ public class Calculator extends Frame {
         frame.setVisible(true);
 
         //добавляем 3 кнопки с лэйблом
-        addLabelAndButton(frame, "Операнд1", 50);
-        addLabelAndButton(frame, "Операнд2", 100);
-        TextField resultTextField = addLabelAndButton(frame, "Результат", 150);
+        operand1 = addLabelAndButton(frame, "Операнд1", 50);
+        operand2 = addLabelAndButton(frame, "Операнд2", 100);
+        resultTextField = addLabelAndButton(frame, "Результат", 150);
 
         //добавляем чекбоксы
         Checkbox checkbox1 = new Checkbox("+");
@@ -48,7 +50,11 @@ public class Calculator extends Frame {
         Button button = new Button("Вычислить");
         button.setBounds(50, 250, 100, 30);
         frame.add(button);
-        button.addActionListener(e -> resultTextField.setText("result"));
+        //register listener
+        CalculatorEvensListener calculatorEvensListener = new CalculatorEvensListener(this);
+        button.addActionListener(calculatorEvensListener);
+
+//        button.addActionListener(e -> resultTextField.setText("result"));
     }
 
     private static TextField addLabelAndButton(Frame frame, String labelName, int y) {
