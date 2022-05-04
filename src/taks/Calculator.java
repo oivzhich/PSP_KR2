@@ -14,12 +14,14 @@ public class Calculator extends Frame {
     TextField resultTextField;
     TextField operand1, operand2;
 
+    CheckboxGroup checkboxGroup;
+
     // constructor
     Calculator() {
         // создаем фрейм окна
         Frame frame = new Frame("Контрольная работа № 2");
 //        добавляем WindowListener для закрытия фрейма
-//        frame.addWindowListener(new MyWindowListener());
+        frame.addWindowListener(new MyWindowListener());
         // устанавливаем размер, лэйаут и видимость фрейма
         frame.setSize(400, 500);
         frame.setLayout(null);
@@ -31,19 +33,21 @@ public class Calculator extends Frame {
         resultTextField = addLabelAndButton(frame, "Результат", 150);
 
         //добавляем чекбоксы
-        Checkbox checkbox1 = new Checkbox("+");
+        checkboxGroup = new CheckboxGroup();
+
+        Checkbox checkbox1 = new Checkbox("+", checkboxGroup, true);
         checkbox1.setBounds(50, 200, 50, 50);
         frame.add(checkbox1);
 
-        Checkbox checkbox2 = new Checkbox("-");
+        Checkbox checkbox2 = new Checkbox("-", checkboxGroup, false);
         checkbox2.setBounds(100, 200, 50, 50);
         frame.add(checkbox2);
 
-        Checkbox checkbox3 = new Checkbox("*");
+        Checkbox checkbox3 = new Checkbox("*", checkboxGroup, false);
         checkbox3.setBounds(150, 200, 50, 50);
         frame.add(checkbox3);
 
-        Checkbox checkbox4 = new Checkbox("/");
+        Checkbox checkbox4 = new Checkbox("/", checkboxGroup, false);
         checkbox4.setBounds(200, 200, 50, 50);
         frame.add(checkbox4);
 
@@ -53,8 +57,6 @@ public class Calculator extends Frame {
         //register listener
         CalculatorEvensListener calculatorEvensListener = new CalculatorEvensListener(this);
         button.addActionListener(calculatorEvensListener);
-
-//        button.addActionListener(e -> resultTextField.setText("result"));
     }
 
     private static TextField addLabelAndButton(Frame frame, String labelName, int y) {

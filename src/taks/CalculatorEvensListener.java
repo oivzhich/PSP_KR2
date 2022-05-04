@@ -19,10 +19,18 @@ public class CalculatorEvensListener implements ActionListener {
         }
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Float x = extractFloatValue(calculator.operand1);
         Float y = extractFloatValue(calculator.operand2);
-        calculator.resultTextField.setText(String.valueOf(x + y));
+        String operation = calculator.checkboxGroup.getSelectedCheckbox().getLabel();
+        switch (operation) {
+            case "+" -> calculator.resultTextField.setText(String.valueOf(x + y));
+            case "-" -> calculator.resultTextField.setText(String.valueOf(x - y));
+            case "*" -> calculator.resultTextField.setText(String.valueOf(x * y));
+            case "/" -> calculator.resultTextField.setText(String.valueOf(x / y));
+            default -> calculator.resultTextField.setText("NaN");
+        }
     }
 }
